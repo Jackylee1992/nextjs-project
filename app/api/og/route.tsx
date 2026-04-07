@@ -29,7 +29,9 @@ export async function GET(request: NextRequest) {
           style={{
             fontSize: 40,
             color: 'white',
-            background: 'linear-gradient(to bottom right, #1a1a2e, #16213e)',
+            backgroundImage: `url(${bgImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
             width: '100%',
             height: '100%',
             display: 'flex',
@@ -41,15 +43,12 @@ export async function GET(request: NextRequest) {
             overflow: 'hidden',
           }}
         >
-          {/* Background image overlay */}
+          {/* Light gradient overlay for text readability */}
           <div
             style={{
               position: 'absolute',
               inset: 0,
-              opacity: 0.3,
-              backgroundImage: `url(${bgImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
+              background: 'linear-gradient(to bottom right, rgba(26, 26, 46, 0.3), rgba(22, 33, 62, 0.4))',
             }}
           />
           
@@ -72,7 +71,7 @@ export async function GET(request: NextRequest) {
                 marginBottom: 20,
                 lineHeight: 1.2,
                 maxWidth: '900px',
-                textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+                textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
               }}
             >
               {title}
@@ -80,9 +79,10 @@ export async function GET(request: NextRequest) {
             <p
               style={{
                 fontSize: 32,
-                opacity: 0.9,
+                opacity: 0.95,
                 maxWidth: '800px',
                 lineHeight: 1.4,
+                textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
               }}
             >
               {description}
