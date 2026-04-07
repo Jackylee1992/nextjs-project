@@ -1,0 +1,7 @@
+{
+  "jest.jestCommandLine": "npm run test --",
+  "jest.autoRun": "off",
+  "jest.nodeEnv": null,
+  "jest.showCoverageOnLoad": false,
+  "jest.debugMode": false
+}
