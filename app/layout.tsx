@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://image.zeta-ai.io/og-image-en.png",
+        url: "https://cdn.miraimindcdn.ai/image/0E/B1/0EB19BAE-B54C-4B05-A600-0FE7ECAFAFBA20260323_L.jpg",
         width: 1200,
         height: 630,
       },
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "本地 HTML 项目",
     description: "这是一个本地 HTML 项目",
-    images: ["https://image.zeta-ai.io/og-image-en.png"],
+    images: ["https://cdn.miraimindcdn.ai/image/0E/B1/0EB19BAE-B54C-4B05-A600-0FE7ECAFAFBA20260323_L.jpg"],
   },
 };
 
