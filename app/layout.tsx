@@ -15,16 +15,17 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "本地 HTML 项目",
   description: "这是一个本地 HTML 项目",
+  metadataBase: new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"),
   openGraph: {
     title: "本地 HTML 项目",
     description: "这是一个本地 HTML 项目",
-    url: "http://localhost:3000",
+    url: "/",
     siteName: "本地 HTML 项目",
-    locale: "zh-CN",
+    locale: "zh_CN",
     type: "website",
     images: [
       {
-        url: "https://cdn.miraimindcdn.ai/image/0E/B1/0EB19BAE-B54C-4B05-A600-0FE7ECAFAFBA20260323_L.jpg",
+        url: "/api/og?width=1200&height=630",
         width: 1200,
         height: 630,
       },
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "本地 HTML 项目",
     description: "这是一个本地 HTML 项目",
-    images: ["https://cdn.miraimindcdn.ai/image/0E/B1/0EB19BAE-B54C-4B05-A600-0FE7ECAFAFBA20260323_L.jpg"],
+    images: ["/api/og?width=1200&height=675"],
   },
 };
 
