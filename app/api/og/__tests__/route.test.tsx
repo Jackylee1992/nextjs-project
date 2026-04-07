@@ -1,35 +1,49 @@
 import { GET } from '../route';
+import type { ReactElement } from 'react';
+import type { NextRequest } from 'next/server';
 
 // Mock next/og
 jest.mock('next/og', () => ({
   ImageResponse: jest.fn(),
 }));
 
-const { ImageResponse } = require('next/og');
+const { ImageResponse } = jest.requireMock('next/og') as { ImageResponse: jest.Mock };
 
-ImageResponse.mockImplementation((content: any, options: any) => {
-  const mockResponse = {
-    content,
-    options,
-    headers: new Map(),
-    set: jest.fn(function(this: any, key: string, value: string) {
-      this.headers.set(key, value);
-      return this;
-    }),
-    get: jest.fn(function(this: any, key: string) {
-      return this.headers.get(key);
-    }),
-  } as any;
-  return mockResponse;
+interface MockResponse {
+  content: ReactElement;
+  options: { width: number; height: number };
+  headers: Map<string, string>;
+  set: (key: string, value: string) => MockResponse;
+  get: (key: string) => string | undefined;
+}
+
+beforeAll(() => {
+  ImageResponse.mockImplementation((content: ReactElement, options: { width: number; height: number }) => {
+    const mockResponse: MockResponse = {
+      content,
+      options,
+      headers: new Map(),
+      set: function(key: string, value: string) {
+        this.headers.set(key, value);
+        return this;
+      },
+      get: function(key: string) {
+        return this.headers.get(key);
+      },
+    };
+    return mockResponse;
+  });
 });
 
 // Create a mock NextRequest
-const createMockRequest = (url: string) => ({
-  url,
-  nextUrl: {
-    searchParams: new URL(url).searchParams,
-  },
-} as any);
+const createMockRequest = (url: string): NextRequest => {
+  return {
+    url,
+    nextUrl: {
+      searchParams: new URL(url).searchParams,
+    },
+  } as unknown as NextRequest;
+};
 
 describe('OG Image API', () => {
   beforeEach(() => {

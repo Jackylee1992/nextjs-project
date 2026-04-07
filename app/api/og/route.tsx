@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
     // Get dynamic parameters from URL query
     const title = searchParams.get('title') || '本地 HTML 项目';
     const description = searchParams.get('description') || '这是一个本地 HTML 项目';
-    let bgImage = searchParams.get('bg') || 'https://cdn.miraimindcdn.ai/image/0E/B1/0EB19BAE-B54C-4B05-A600-0FE7ECAFAFBA20260323_L.jpg';
+    const bgImage = searchParams.get('bg') || 'https://cdn.miraimindcdn.ai/image/0E/B1/0EB19BAE-B54C-4B05-A600-0FE7ECAFAFBA20260323_L.jpg';
     
     // Validate background URL (prevent XSS)
     if (bgImage && !bgImage.match(/^https?:\/\//)) {
