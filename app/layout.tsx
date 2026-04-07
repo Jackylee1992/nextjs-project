@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description: "这是一个本地 HTML 项目",
     url: "/",
     siteName: "本地 HTML 项目",
-    locale: "zh_CN",
+    locale: "zh-CN",
     type: "website",
     images: [
       {
