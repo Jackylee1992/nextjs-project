@@ -29,9 +29,6 @@ export async function GET(request: NextRequest) {
           style={{
             fontSize: 40,
             color: 'white',
-            backgroundImage: `url(${bgImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
             width: '100%',
             height: '100%',
             display: 'flex',
@@ -43,6 +40,23 @@ export async function GET(request: NextRequest) {
             overflow: 'hidden',
           }}
         >
+          {/* Background image using <img> tag (Satori doesn't support backgroundImage) */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={bgImage}
+            style={{
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+            alt="bg"
+          />
+          
           {/* Light gradient overlay for text readability */}
           <div
             style={{
@@ -52,11 +66,10 @@ export async function GET(request: NextRequest) {
             }}
           />
           
-          {/* Content */}
+          {/* Content - placed after overlay so it appears on top (Satori uses DOM order, not z-index) */}
           <div
             style={{
               position: 'relative',
-              zIndex: 1,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -71,7 +84,6 @@ export async function GET(request: NextRequest) {
                 marginBottom: 20,
                 lineHeight: 1.2,
                 maxWidth: '900px',
-                textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
               }}
             >
               {title}
@@ -82,7 +94,6 @@ export async function GET(request: NextRequest) {
                 opacity: 0.95,
                 maxWidth: '800px',
                 lineHeight: 1.4,
-                textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
               }}
             >
               {description}
