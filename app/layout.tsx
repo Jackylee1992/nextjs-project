@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "本地 HTML 项目",
     description: "这是一个本地 HTML 项目",
-    url: "/",
+    url: "https://miraimind.ai/en/",
     siteName: "本地 HTML 项目",
     locale: "zh-CN",
     type: "website",
